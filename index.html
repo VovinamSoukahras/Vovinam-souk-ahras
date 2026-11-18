@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>نادي فوفينام فيات فوداو - سوق أهراس</title>
+    <!-- خط تجوال العربي الأنيق -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vovinam-blue: #0056b3;
+            --vovinam-dark-blue: #003366;
+            --vovinam-yellow: #ffd700;
+            --vovinam-red: #d90429;
+            --algeria-green: #006633;
+            --bg-light: #f4f7f6;
+            --text-dark: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* حاوية مخصصة لشاشة الهاتف الطولية */
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--bg-light);
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* الشريط العلوي */
+        header {
+            background: linear-gradient(135deg, var(--vovinam-dark-blue), var(--vovinam-blue));
+            color: white;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--vovinam-yellow);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* شعار فوفينام مدمج بالكود لضمان ظهوره دائماً */
+        .vovinam-badge {
+            width: 45px;
+            height: 45px;
+            background: var(--vovinam-yellow);
+            border: 2px solid var(--vovinam-red);
+            border-radius: 8px 8px 22px 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+
+        .vovinam-badge span {
+            font-size: 8px;
+            font-weight: 900;
+            color: var(--vovinam-red);
+            line-height: 1;
+        }
+
+        .yin-yang {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--vovinam-blue) 50%, var(--vovinam-red) 50%);
+            border: 1.5px solid white;
+            margin-top: 2px;
+        }
+
+        .club-title h1 {
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .club-title p {
+            font-size: 11px;
+            color: var(--vovinam-yellow);
+            font-weight: 500;
+        }
+
+        /* قسم الخلفية الرئيسية (Hero Section) */
+        .hero {
+            position: relative;
+            height: 82vh;
+            min-height: 520px;
+            background-image: linear-gradient(to bottom, rgba(0, 30, 60, 0.55), rgba(0, 20, 45, 0.9)), url('bg.jpg');
+            background-size: cover;
+            background-position: center top;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-tag {
+            background: rgba(0, 102, 51, 0.9);
+            border: 1px solid var(--vovinam-yellow);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0 auto 12px;
+        }
+
+        .hero h2 {
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: #e2e8f0;
+            margin-bottom: 22px;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--vovinam-yellow), #ffea00);
+            color: var(--vovinam-dark-blue);
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        /* الأقسام الداخلية (تظهر بعد الدخول أو النزول) */
+        .content-section {
+            padding: 25px 18px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--vovinam-dark-blue);
+            margin-bottom: 15px;
+            padding-right: 12px;
+            border-right: 4px solid var(--vovinam-blue);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* بطاقة التعريف بالرياضة */
+        .about-card {
+            background: white;
+            padding: 18px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+            border-top: 4px solid var(--vovinam-blue);
+        }
+
+        .about-card p {
+            font-size: 14.5px;
+            line-height: 1.75;
+            color: #334155;
+            text-align: justify;
+        }
+
+        .principles {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .principle-chip {
+            background: #eff6ff;
+            color: var(--vovinam-blue);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* قسم المدربين - قص ذكي للصورة */
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .coach-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            border-bottom: 4px solid var(--vovinam-yellow);
+        }
+
+        .coach-photo-box {
+            width: 100%;
+            height: 210px;
+            overflow: hidden;
+            position: relative;
+            background: #006633;
+        }
+
+        /* قص تلقائي لكل مدرب من الصورة المجمعة */
+        .coach-img-salah {
+            width: 210%;
+            height: 135%;
+            object-fit: cover;
+            object-position: 12% 18%;
+            transform: translateX(2%);
+        }
+
+        .coach-img-mouad {
+            width: 210%;
+            height: 135%;
+            object-fit: cover;
+            object-position: 85% 18%;
+            transform: translateX(-48%);
+        }
+
+        .coach-info {
+            padding: 12px 8px;
+        }
+
+        .coach-role {
+            font-size: 11px;
+            color: var(--vovinam-blue);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .coach-name {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        /* استمارة التسجيل */
+        .form-card {
+            background: white;
+            padding: 22px 18px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.12);
+            border: 1px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--vovinam-dark-blue);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+            background: #f8fafc;
+        }
+
+        .form-group input:focus {
+            border-color: var(--vovinam-blue);
+            background: white;
+        }
+
+        .form-group input[readonly] {
+            background-color: #e2e8f0;
+            color: #475569;
+            font-weight: 700;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            background: var(--vovinam-dark-blue);
+            color: #cbd5e1;
+            text-align: center;
+            padding: 18px;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        footer span {
+            color: var(--vovinam-yellow);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-container">
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="logo-area">
+            <div class="vovinam-badge">
+                <span>VOVINAM</span>
+                <div class="yin-yang"></div>
+            </div>
+            <div class="club-title">
+                <h1>نادي فوفينام سوق أهراس</h1>
+                <p>Vovinam Viet Vo Dao - Souk Ahras</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية بالخلفية -->
+    <section class="hero" id="home">
+        <div class="hero-tag">الجزائر • ولاية سوق أهراس 🇩🇿</div>
+        <h2>مرحباً بكم في نادي فوفينام فيات فوداو</h2>
+        <p>مدرسة الفن القتالي الفيتنامي الأصيل، التربية البدنية، والدفاع عن النفس تحت إشراف نخبة من المدربين.</p>
+        <button class="btn-primary" onclick="enterSite()">دخول والتسجيل في النادي 🥋</button>
+    </section>
+
+    <!-- محتوى الموقع (يظهر بعد الضغط على دخول أو التمرير) -->
+    <main class="content-section" id="main-content">
+        
+        <!-- تعريف صغير بفوفينام فيات فوداو -->
+        <h3 class="section-title">تعريف رياضة فوفينام فيات فوداو</h3>
+        <div class="about-card">
+            <p>
+                <strong>فوفينام فيات فوداو (Vovinam Việt Võ Đạo)</strong> هو فن قتالي فيتنامي تقليدي وعصري يجمع بين تقنيات الدفاع عن النفس، الضربات باليدين والرجلين، المصارعة، واستخدام الأسلحة التقليدية، بالإضافة إلى الضربات الطائرة المقصية الشهيرة. يهدف النادي إلى بناء شخصية المتدرب وفق مبدأ <em>"العقل السليم في الجسم السليم"</em> وترسيخ قيم الاحترام، الانضباط، والشجاعة.
+            </p>
+            <div class="principles">
+                <span class="principle-chip">🛡️ الدفاع عن النفس</span>
+                <span class="principle-chip">💪 اللياقة البدنية</span>
+                <span class="principle-chip">🧠 الانضباط والثقة</span>
+            </div>
+        </div>
+
+        <!-- قسم المدربين -->
+        <h3 class="section-title">الطاقم التدريبي للنادي</h3>
+        <div class="coaches-grid">
+            <!-- المدرب الأول -->
+            <div class="coach-card">
+                <div class="coach-photo-box">
+                    <img src="coaches.jpg" alt="المدرب بوسيف صلاح الدين" class="coach-img-salah">
+                </div>
+                <div class="coach-info">
+                    <span class="coach-role">مدرب النادي</span>
+                    <div class="coach-name">المدرب بوسيف صلاح الدين</div>
+                </div>
+            </div>
+
+            <!-- المدرب الثاني -->
+            <div class="coach-card">
+                <div class="coach-photo-box">
+                    <img src="coaches.jpg" alt="المدرب جبابلية معاذ" class="coach-img-mouad">
+                </div>
+                <div class="coach-info">
+                    <span class="coach-role">مدرب النادي</span>
+                    <div class="coach-name">المدرب جبابلية معاذ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- استمارة التسجيل -->
+        <h3 class="section-title" id="register-section">استمارة الانخراط والتسجيل</h3>
+        <div class="form-card">
+            <form id="registrationForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label for="fullName">الاسم واللقب *</label>
+                    <input type="text" id="fullName" placeholder="أدخل الاسم واللقب الكامل" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">تاريخ الميلاد *</label>
+                    <input type="date" id="birthDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف *</label>
+                    <input type="tel" id="phone" placeholder="مثال: 0665000000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="regDate">تاريخ التسجيل</label>
+                    <input type="text" id="regDate" readonly>
+                </div>
+
+                <button type="submit" class="btn-whatsapp">
+                    <span>إرسال التسجيل عبر واتساب</span>
+                    <span>📲</span>
+                </button>
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        جميع الحقوق محفوظة © <span>نادي فوفينام فيات فوداو - سوق أهراس</span>
+    </footer>
+</div>
+
+<script>
+    // تعبئة تاريخ التسجيل تلقائياً بتاريخ اليوم
+    window.onload = function() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        document.getElementById('regDate').value = `${year}-${month}-${day}`;
+    };
+
+    // الانتقال السلس عند الضغط على زر الدخول
+    function enterSite() {
+        document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // إرسال البيانات مباشرة إلى رقم الواتساب 0665668688
+    function sendToWhatsApp(event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const birthDate = document.getElementById('birthDate').value;
+        const phone = document.getElementById('phone').value.trim();
+        const regDate = document.getElementById('regDate').value;
+
+        // تنسيق الرقم الجزائري للواتساب الدولي (213665668688)
+        const clubWhatsAppNumber = "213665668688";
+
+        const message = 
+`*طلب تسجيل جديد - نادي فوفينام سوق أهراس* 🥋
+----------------------------------
+👤 *الاسم واللقب:* ${fullName}
+🎂 *تاريخ الميلاد:* ${birthDate}
+📞 *رقم الهاتف:* ${phone}
+📅 *تاريخ التسجيل:* ${regDate}
+----------------------------------`;
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${clubWhatsAppNumber}?text=${encodedMessage}`;
+
+        // فتح تطبيق واتساب لإرسال الرسالة
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
+</body>
+</html>
